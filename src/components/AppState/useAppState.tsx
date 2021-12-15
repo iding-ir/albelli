@@ -2,6 +2,7 @@ import { useState, createContext } from "react";
 
 interface IAppState {
   files: any;
+  canvasWidth: number;
   x: number;
   y: number;
   scale: number;
@@ -9,6 +10,7 @@ interface IAppState {
 
 const iAppState: IAppState = {
   files: {},
+  canvasWidth: 500,
   x: 0,
   y: 0,
   scale: 1,
