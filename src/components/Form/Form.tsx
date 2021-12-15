@@ -6,6 +6,7 @@ import MoveDown from "../MoveDown/MoveDown";
 import ScaleUp from "../ScaleUp/ScaleUp";
 import ScaleDown from "../ScaleDown/ScaleDown";
 import CanvasWidth from "../CanvasWidth/CanvasWidth";
+import Export from "../Export/Export";
 
 const Form = () => {
   return (
@@ -25,6 +26,8 @@ const Form = () => {
       <ScaleDown />
 
       <CanvasWidth />
+
+      <Export />
     </form>
   );
 };

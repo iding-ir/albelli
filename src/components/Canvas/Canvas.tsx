@@ -4,7 +4,7 @@ import { AppStateContext } from "../AppState/useAppState";
 import "./style.scss";
 
 const Canvas = () => {
-  const { appState } = useContext(AppStateContext);
+  const { appState, setAppState } = useContext(AppStateContext);
   const { files, canvasWidth, x, y, scale } = appState;
   const canvasRef = useRef<any>(null);
 
@@ -31,11 +31,14 @@ const Canvas = () => {
 
               img.onload = function () {
                 // grab some data from the image
-                const width = img.naturalWidth;
-                const height = img.naturalHeight;
+                const w = img.naturalWidth;
+                const h = img.naturalHeight;
+                const result = reader.result;
+
+                setAppState({ ...appState, w, h, result });
 
                 canvasRef.current.width = canvasWidth;
-                canvasRef.current.height = (canvasWidth * height) / width;
+                canvasRef.current.height = (canvasWidth * h) / w;
 
                 const ctx = canvasRef.current.getContext("2d");
 
@@ -43,8 +46,8 @@ const Canvas = () => {
                   img,
                   0,
                   0,
-                  width * scale,
-                  height * scale,
+                  w * scale,
+                  h * scale,
                   x,
                   y,
                   canvasRef.current.width,

@@ -5,7 +5,10 @@ interface IAppState {
   canvasWidth: number;
   x: number;
   y: number;
+  w: number;
+  h: number;
   scale: number;
+  result: string | ArrayBuffer | null;
 }
 
 const iAppState: IAppState = {
@@ -13,7 +16,10 @@ const iAppState: IAppState = {
   canvasWidth: 500,
   x: 0,
   y: 0,
+  w: 0,
+  h: 0,
   scale: 1,
+  result: null,
 };
 
 interface IStateContext {
