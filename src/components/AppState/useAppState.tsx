@@ -4,12 +4,14 @@ interface IAppState {
   files: any;
   x: number;
   y: number;
+  scale: number;
 }
 
 const iAppState: IAppState = {
   files: {},
   x: 0,
   y: 0,
+  scale: 1,
 };
 
 interface IStateContext {

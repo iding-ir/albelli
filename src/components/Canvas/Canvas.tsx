@@ -4,7 +4,7 @@ import { AppStateContext } from "../AppState/useAppState";
 
 const Canvas = () => {
   const { appState } = useContext(AppStateContext);
-  const { files, x, y } = appState;
+  const { files, x, y, scale } = appState;
   const canvasRef = useRef<any>(null);
 
   useEffect(() => {
@@ -46,8 +46,8 @@ const Canvas = () => {
                   height,
                   x,
                   y,
-                  canvasRef.current.width,
-                  canvasRef.current.height
+                  canvasRef.current.width * scale,
+                  canvasRef.current.height * scale
                 );
 
                 // do your magic here...
@@ -62,7 +62,7 @@ const Canvas = () => {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [files, x, y]);
+  }, [files, x, y, scale]);
 
   return <canvas ref={canvasRef}></canvas>;
 };
