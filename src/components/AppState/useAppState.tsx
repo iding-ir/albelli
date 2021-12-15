@@ -2,14 +2,14 @@ import { useState, createContext } from "react";
 
 interface IAppState {
   files: any;
-  canvasRef: any;
-  uploaderRed: any;
+  x: number;
+  y: number;
 }
 
 const iAppState: IAppState = {
   files: {},
-  canvasRef: null,
-  uploaderRed: null,
+  x: 0,
+  y: 0,
 };
 
 interface IStateContext {
