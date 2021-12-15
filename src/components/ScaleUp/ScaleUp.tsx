@@ -1,7 +1,6 @@
 import { useContext } from "react";
 
 import { AppStateContext } from "../AppState/useAppState";
-
 import Button from "../Button/Button";
 
 const ScaleUp = () => {
@@ -10,7 +9,11 @@ const ScaleUp = () => {
   const { scale } = appState;
 
   const onClick = () => {
-    setAppState({ ...appState, scale: scale * 1.25 });
+    if (scale < 0.5) {
+      return;
+    }
+
+    setAppState({ ...appState, scale: scale / 1.25 });
   };
 
   return <Button label="Scale Up" onClick={onClick} />;

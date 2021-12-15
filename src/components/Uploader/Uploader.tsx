@@ -1,11 +1,11 @@
-import { useContext } from "react";
+import { useContext, ChangeEvent } from "react";
 
 import { AppStateContext } from "../AppState/useAppState";
 
 const Uploader = () => {
   const { appState, setAppState } = useContext(AppStateContext);
 
-  const handleChange = (event: any) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
 
     setAppState({ ...appState, files });

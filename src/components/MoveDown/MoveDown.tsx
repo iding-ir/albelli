@@ -1,7 +1,6 @@
 import { useContext } from "react";
 
 import { AppStateContext } from "../AppState/useAppState";
-
 import Button from "../Button/Button";
 
 const MoveDown = () => {

@@ -1,7 +1,7 @@
 import { useState, createContext } from "react";
 
 interface IAppState {
-  files: any;
+  files: FileList | null;
   canvasWidth: number;
   x: number;
   y: number;
@@ -9,7 +9,7 @@ interface IAppState {
 }
 
 const iAppState: IAppState = {
-  files: {},
+  files: null,
   canvasWidth: 500,
   x: 0,
   y: 0,

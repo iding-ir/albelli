@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, ChangeEvent } from "react";
 
 import { AppStateContext } from "../AppState/useAppState";
 
@@ -10,7 +10,7 @@ const CanvasWidth = () => {
   const minWidth = 100;
   const maxWidth = 1000;
 
-  const onChange = (event: any) => {
+  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     const width = parseInt(event.target.value);
 
     if (width < minWidth || width > maxWidth) {
