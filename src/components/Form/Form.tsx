@@ -1,5 +1,8 @@
-import Uploader from "../Uploader/Uploader";
-import JsonUploader from "../JsonUploader/JsonUploader";
+import { useContext } from "react";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+
+import { AppStateContext } from "../AppState/useAppState";
 import MoveLeft from "../MoveLeft/MoveLeft";
 import MoveRight from "../MoveRight/MoveRight";
 import MoveUp from "../MoveUp/MoveUp";
@@ -10,30 +13,35 @@ import CanvasWidth from "../CanvasWidth/CanvasWidth";
 import Export from "../Export/Export";
 
 const Form = () => {
+  const { appState } = useContext(AppStateContext);
+  const { files, jsons } = appState;
+
   return (
-    <form>
-      <Uploader />
+    <Box sx={{ padding: "1rem" }}>
+      {files || jsons ? (
+        <form>
+          <MoveLeft />
 
-      <div>-OR-</div>
+          <MoveRight />
 
-      <JsonUploader />
+          <MoveUp />
 
-      <MoveLeft />
+          <MoveDown />
 
-      <MoveRight />
+          <ScaleUp />
 
-      <MoveUp />
+          <ScaleDown />
 
-      <MoveDown />
+          <CanvasWidth />
 
-      <ScaleUp />
-
-      <ScaleDown />
-
-      <CanvasWidth />
-
-      <Export />
-    </form>
+          <Export />
+        </form>
+      ) : (
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          Please upload an Image or a JSON file first.
+        </Typography>
+      )}
+    </Box>
   );
 };
 

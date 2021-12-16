@@ -1,22 +1,19 @@
-import { useContext, ChangeEvent } from "react";
+import MuiButton from "@mui/material/Button";
+interface IProps {
+  label: string;
+  onChange: any;
+}
 
-import { AppStateContext } from "../AppState/useAppState";
-
-const Uploader = () => {
-  const { appState, setAppState } = useContext(AppStateContext);
-
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const files = event.target.files;
-
-    setAppState({ ...appState, files });
-  };
-
+const Uploader = ({ label, onChange }: IProps) => {
   return (
-    <fieldset>
-      <label htmlFor="fileSelector">Select an Image file</label>
-
-      <input type="file" id="fileSelector" onChange={handleChange} />
-    </fieldset>
+    <MuiButton
+      sx={{ margin: "0 0.5rem" }}
+      variant="contained"
+      component="label"
+    >
+      {label}
+      <input type="file" hidden onChange={onChange} />
+    </MuiButton>
   );
 };
 

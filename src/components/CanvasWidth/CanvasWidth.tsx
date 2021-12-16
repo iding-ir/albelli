@@ -1,4 +1,5 @@
 import { useState, useContext, ChangeEvent } from "react";
+import TextField from "@mui/material/TextField";
 
 import { AppStateContext } from "../AppState/useAppState";
 
@@ -24,16 +25,14 @@ const CanvasWidth = () => {
 
   return (
     <>
-      <label htmlFor="canvasWidth">Canvas Width</label>
-
-      <input
+      <TextField
         type="number"
         id="canvasWidth"
-        step={50}
-        min={minWidth}
-        max={maxWidth}
+        inputProps={{ min: minWidth, max: maxWidth, step: 50 }}
         value={width}
         onChange={onChange}
+        label="Canvas Width"
+        variant="outlined"
       />
     </>
   );

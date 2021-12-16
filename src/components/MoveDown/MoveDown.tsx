@@ -1,7 +1,8 @@
 import { useContext } from "react";
+import IconButton from "@mui/material/IconButton";
+import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 
 import { AppStateContext } from "../AppState/useAppState";
-import Button from "../Button/Button";
 
 const MoveDown = () => {
   const { appState, setAppState } = useContext(AppStateContext);
@@ -12,7 +13,17 @@ const MoveDown = () => {
     setAppState({ ...appState, y: y + 1 });
   };
 
-  return <Button label="Move Down" onClick={onClick} />;
+  return (
+    <IconButton
+      onClick={onClick}
+      size="large"
+      color="secondary"
+      aria-label="Move Down"
+      sx={{ mr: 2 }}
+    >
+      <KeyboardArrowDown />
+    </IconButton>
+  );
 };
 
 export default MoveDown;

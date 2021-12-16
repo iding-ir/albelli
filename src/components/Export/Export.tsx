@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import TextField from "@mui/material/TextField";
 
 import { AppStateContext } from "../AppState/useAppState";
 import Button from "../Button/Button";
@@ -8,7 +9,7 @@ import "./styles.scss";
 const Export = () => {
   const [exportObject, setExportObject] = useState({});
   const { appState } = useContext(AppStateContext);
-  const { files, canvasWidth, x, y, w, h, scale, result } = appState;
+  const { files, jsons, canvasWidth, x, y, w, h, scale, result } = appState;
 
   useEffect(() => {
     const exportObject = {
@@ -28,14 +29,18 @@ const Export = () => {
     };
 
     setExportObject(exportObject);
-  }, [files, canvasWidth, x, y, w, h, scale, result]);
+  }, [files, jsons, canvasWidth, x, y, w, h, scale, result]);
 
-  return files ? (
+  return files || jsons ? (
     <>
-      <textarea
-        readOnly
+      <TextField
+        inputProps={{ readOnly: true }}
+        multiline
         id="exportTextarea"
         value={JSON.stringify(exportObject)}
+        label="Export Code"
+        variant="outlined"
+        sx={{ display: "none" }}
       />
 
       <Button

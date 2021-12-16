@@ -1,7 +1,8 @@
 import { useContext } from "react";
+import IconButton from "@mui/material/IconButton";
+import ZoomInMap from "@mui/icons-material/ZoomInMap";
 
 import { AppStateContext } from "../AppState/useAppState";
-import Button from "../Button/Button";
 
 const ScaleDown = () => {
   const { appState, setAppState } = useContext(AppStateContext);
@@ -16,7 +17,17 @@ const ScaleDown = () => {
     setAppState({ ...appState, scale: scale * 1.25 });
   };
 
-  return <Button label="Scale Down" onClick={onClick} />;
+  return (
+    <IconButton
+      onClick={onClick}
+      size="large"
+      color="secondary"
+      aria-label="Scale Down"
+      sx={{ mr: 2 }}
+    >
+      <ZoomInMap />
+    </IconButton>
+  );
 };
 
 export default ScaleDown;

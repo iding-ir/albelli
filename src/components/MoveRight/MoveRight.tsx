@@ -1,7 +1,8 @@
 import { useContext } from "react";
+import IconButton from "@mui/material/IconButton";
+import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 
 import { AppStateContext } from "../AppState/useAppState";
-import Button from "../Button/Button";
 
 const MoveRight = () => {
   const { appState, setAppState } = useContext(AppStateContext);
@@ -12,7 +13,17 @@ const MoveRight = () => {
     setAppState({ ...appState, x: x + 1 });
   };
 
-  return <Button label="Move Right" onClick={onClick} />;
+  return (
+    <IconButton
+      onClick={onClick}
+      size="large"
+      color="secondary"
+      aria-label="Move Right"
+      sx={{ mr: 2 }}
+    >
+      <KeyboardArrowRight />
+    </IconButton>
+  );
 };
 
 export default MoveRight;
