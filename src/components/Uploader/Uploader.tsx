@@ -1,7 +1,8 @@
+import { ChangeEventHandler } from "react";
 import MuiButton from "@mui/material/Button";
 interface IProps {
   label: string;
-  onChange: any;
+  onChange: ChangeEventHandler<HTMLInputElement> | undefined;
 }
 
 const Uploader = ({ label, onChange }: IProps) => {
