@@ -7,8 +7,8 @@ import MoveLeft from "../MoveLeft/MoveLeft";
 import MoveRight from "../MoveRight/MoveRight";
 import MoveUp from "../MoveUp/MoveUp";
 import MoveDown from "../MoveDown/MoveDown";
-import ScaleUp from "../ScaleUp/ScaleUp";
-import ScaleDown from "../ScaleDown/ScaleDown";
+import ScaleUp from "../ScaleDown/ScaleDown";
+import ScaleDown from "../ScaleUp/ScaleUp";
 import CanvasWidth from "../CanvasWidth/CanvasWidth";
 import Export from "../Export/Export";
 

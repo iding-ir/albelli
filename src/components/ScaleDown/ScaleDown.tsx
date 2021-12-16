@@ -1,21 +1,21 @@
 import { useContext } from "react";
 import IconButton from "@mui/material/IconButton";
-import ZoomInMap from "@mui/icons-material/ZoomInMap";
+import ZoomOutMap from "@mui/icons-material/ZoomOutMap";
 
 import { AppStateContext } from "../AppState/useAppState";
-import { SCALE_STEP, MAX_SCALE } from "../../constants";
+import { SCALE_STEP, MIN_SCALE } from "../../constants";
 
-const ScaleDown = () => {
+const ScaleUp = () => {
   const { appState, setAppState } = useContext(AppStateContext);
 
   const { scale } = appState;
 
   const onClick = () => {
-    if (scale > MAX_SCALE) {
+    if (scale < MIN_SCALE) {
       return;
     }
 
-    setAppState({ ...appState, scale: scale * SCALE_STEP });
+    setAppState({ ...appState, scale: scale / SCALE_STEP });
   };
 
   return (
@@ -23,12 +23,12 @@ const ScaleDown = () => {
       onClick={onClick}
       size="large"
       color="secondary"
-      aria-label="Scale Down"
+      aria-label="Scale Up"
       sx={{ mr: 2 }}
     >
-      <ZoomInMap />
+      <ZoomOutMap />
     </IconButton>
   );
 };
 
-export default ScaleDown;
+export default ScaleUp;
