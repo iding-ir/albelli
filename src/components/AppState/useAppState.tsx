@@ -4,7 +4,7 @@ interface IAppState {
   files: FileList | null;
   jsons: FileList | null;
   canvasWidth: number;
-  canvasHeight: number | null;
+  canvasHeight: number;
   x: number;
   y: number;
   w: number;
@@ -18,7 +18,7 @@ export const iAppState: IAppState = {
   files: null,
   jsons: null,
   canvasWidth: 500,
-  canvasHeight: null,
+  canvasHeight: 500,
   x: 0,
   y: 0,
   w: 0,

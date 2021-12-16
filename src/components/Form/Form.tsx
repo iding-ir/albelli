@@ -10,6 +10,7 @@ import MoveDown from "../MoveDown/MoveDown";
 import ScaleUp from "../ScaleDown/ScaleDown";
 import ScaleDown from "../ScaleUp/ScaleUp";
 import CanvasWidth from "../CanvasWidth/CanvasWidth";
+import CanvasHeight from "../CanvasHeight/CanvasHeight";
 import Export from "../Export/Export";
 
 const Form = () => {
@@ -33,6 +34,8 @@ const Form = () => {
           <ScaleDown />
 
           <CanvasWidth />
+
+          <CanvasHeight />
 
           <Export />
         </form>

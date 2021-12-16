@@ -6,7 +6,7 @@ import { ExportJson } from "../../types";
 
 const Canvas = () => {
   const { appState, setAppState } = useContext(AppStateContext);
-  const { files, jsons, canvasWidth, x, y, scale } = appState;
+  const { files, jsons, canvasWidth, canvasHeight, x, y, scale } = appState;
   const canvasRef = useRef<any>(null);
 
   const onLoad = (
@@ -44,13 +44,11 @@ const Canvas = () => {
           scale: appState.scale || scale,
         });
       } else {
-        const canvasHeight = (canvasWidth * h) / w;
-
-        setAppState({ ...appState, w, h, canvasWidth, canvasHeight, result });
+        setAppState({ ...appState, w, h, result });
       }
 
       canvasRef.current.width = canvasWidth;
-      canvasRef.current.height = (canvasWidth * h) / w;
+      canvasRef.current.height = canvasHeight;
 
       const ctx = canvasRef.current.getContext("2d");
 
@@ -83,7 +81,7 @@ const Canvas = () => {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [files, canvasWidth, x, y, scale]);
+  }, [files, canvasWidth, canvasHeight, x, y, scale]);
 
   useEffect(() => {
     if (jsons) {
@@ -121,7 +119,7 @@ const Canvas = () => {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [jsons, canvasWidth, x, y, scale]);
+  }, [jsons, canvasWidth, canvasHeight, x, y, scale]);
 
   return files || jsons ? (
     <div className="canvas">

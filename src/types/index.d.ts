@@ -1,7 +1,7 @@
 export interface ExportJson {
   canvas: {
     width: number;
-    height: number | null;
+    height: number;
     photo: {
       id: string | null;
       w: number;
