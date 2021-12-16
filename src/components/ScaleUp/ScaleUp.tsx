@@ -3,6 +3,7 @@ import IconButton from "@mui/material/IconButton";
 import ZoomOutMap from "@mui/icons-material/ZoomOutMap";
 
 import { AppStateContext } from "../AppState/useAppState";
+import { SCALE_STEP, MIN_SCALE } from "../../constants";
 
 const ScaleUp = () => {
   const { appState, setAppState } = useContext(AppStateContext);
@@ -10,11 +11,11 @@ const ScaleUp = () => {
   const { scale } = appState;
 
   const onClick = () => {
-    if (scale < 0.5) {
+    if (scale < MIN_SCALE) {
       return;
     }
 
-    setAppState({ ...appState, scale: scale / 1.25 });
+    setAppState({ ...appState, scale: scale / SCALE_STEP });
   };
 
   return (

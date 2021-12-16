@@ -3,6 +3,7 @@ import IconButton from "@mui/material/IconButton";
 import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 
 import { AppStateContext } from "../AppState/useAppState";
+import { MOVE_STEP } from "../../constants";
 
 const MoveDown = () => {
   const { appState, setAppState } = useContext(AppStateContext);
@@ -10,7 +11,7 @@ const MoveDown = () => {
   const { y } = appState;
 
   const onClick = () => {
-    setAppState({ ...appState, y: y + 1 });
+    setAppState({ ...appState, y: y + MOVE_STEP });
   };
 
   return (
