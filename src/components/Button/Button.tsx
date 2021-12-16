@@ -13,6 +13,7 @@ const Button = ({ label, onClick, disabled }: IProps) => {
       disabled={disabled}
       variant="contained"
       onClick={onClick}
+      size="large"
     >
       {label}
     </MuiButton>

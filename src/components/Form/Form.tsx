@@ -9,8 +9,8 @@ import MoveUp from "../MoveUp/MoveUp";
 import MoveDown from "../MoveDown/MoveDown";
 import ScaleUp from "../ScaleDown/ScaleDown";
 import ScaleDown from "../ScaleUp/ScaleUp";
-import Width from "../Width/Width";
-import Height from "../Height/Height";
+import Width from "../CanvasWidth/CanvasWidth";
+import Height from "../CanvasHeight/CanvasHeight";
 import FileName from "../FileName/FileName";
 import Export from "../Export/Export";
 

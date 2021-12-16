@@ -20,6 +20,7 @@ const FileName = () => {
         onChange={onChange}
         label="File Name"
         variant="outlined"
+        sx={{ margin: "0 0.5rem" }}
       />
     </>
   );
