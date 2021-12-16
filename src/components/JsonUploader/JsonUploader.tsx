@@ -12,7 +12,7 @@ const JsonUploader = () => {
     setAppState({ ...appState, jsons });
   };
 
-  return <Uploader label="Upload a JSON" onChange={handleChange} />;
+  return <Uploader label="Upload a JSON File" onChange={handleChange} />;
 };
 
 export default JsonUploader;

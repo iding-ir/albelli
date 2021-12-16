@@ -28,19 +28,7 @@ const Canvas = () => {
 
       const ctx = canvasRef.current.getContext("2d");
 
-      ctx.drawImage(
-        img,
-        0,
-        0,
-        w * scale,
-        h * scale,
-        x,
-        y,
-        canvasRef.current.width,
-        canvasRef.current.height
-      );
-
-      // do your magic here...
+      ctx.drawImage(img, 0, 0, w * scale, h * scale, x, y, w, h);
     };
   };
 
