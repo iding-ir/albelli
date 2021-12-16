@@ -9,8 +9,6 @@ const Canvas = () => {
   const canvasRef = useRef<any>(null);
 
   const onLoad = (result: string | ArrayBuffer | null) => {
-    console.log(result);
-
     // create HTMLImageElement holding image data
     const img = new Image();
 
