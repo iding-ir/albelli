@@ -2,7 +2,7 @@ import { useContext } from "react";
 import IconButton from "@mui/material/IconButton";
 import ZoomInMap from "@mui/icons-material/ZoomInMap";
 
-import { AppStateContext } from "../AppState/useAppState";
+import { AppStateContext } from "../../hooks/useAppState";
 import { SCALE_STEP, MAX_SCALE } from "../../constants";
 
 const ScaleDown = () => {

@@ -1,14 +1,18 @@
 import { useEffect, useContext, useRef } from "react";
 
-import { AppStateContext } from "../AppState/useAppState";
+import { AppStateContext } from "../../hooks/useAppState";
 import "./style.scss";
 import { ExportJson } from "../../types";
+
+// size of image: w & h
+// size of canvas: width & height
 
 const Canvas = () => {
   const { appState, setAppState } = useContext(AppStateContext);
   const { files, jsons, width, height, x, y, scale, jsonHasLoaded } = appState;
   const canvasRef = useRef<any>(null);
 
+  // 'onLoad' function to handle both load of Image and JSON files
   const onLoad = (
     result: string | ArrayBuffer | null,
     parsedJSON?: ExportJson
@@ -24,7 +28,12 @@ const Canvas = () => {
       const h = img.naturalHeight;
 
       if (parsedJSON) {
+        // update image settings for upload by JSON
+
         if (!jsonHasLoaded) {
+          // only get image settings from 'parsedJSON' once and
+          // that is when 'jsonHasLoaded' is not set to true yet
+
           const { height, width, photo } = parsedJSON.canvas;
           const { x, y, w, h, scale, result, id } = photo;
 
@@ -43,6 +52,8 @@ const Canvas = () => {
           });
         }
       } else {
+        // update image settings for upload by Image
+
         const id = files![0].name;
 
         setAppState({ ...appState, w, h, result, id });

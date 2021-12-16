@@ -1,8 +1,8 @@
 import { useContext, ChangeEvent } from "react";
 
-import { AppStateContext } from "../AppState/useAppState";
+import { AppStateContext } from "../../hooks/useAppState";
 import Uploader from "../Uploader/Uploader";
-import { iAppState } from "../AppState/useAppState";
+import { iAppState } from "../../hooks/useAppState";
 
 const FileUploader = () => {
   const { setAppState } = useContext(AppStateContext);

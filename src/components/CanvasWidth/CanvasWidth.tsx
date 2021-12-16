@@ -1,7 +1,7 @@
 import { useContext, ChangeEvent } from "react";
 import TextField from "@mui/material/TextField";
 
-import { AppStateContext } from "../AppState/useAppState";
+import { AppStateContext } from "../../hooks/useAppState";
 import { CANVAS_MAX_SIZE, CANVAS_MIN_SIZE } from "../../constants";
 
 const CanvasWidth = () => {

@@ -3,10 +3,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Header from "./components//Header/Header";
 import Form from "./components/Form/Form";
 import Canvas from "./components/Canvas/Canvas";
-import {
-  useAppState,
-  AppStateContext,
-} from "./components/AppState/useAppState";
+import { useAppState, AppStateContext } from "./hooks/useAppState";
 
 function App() {
   const stateValues = useAppState();

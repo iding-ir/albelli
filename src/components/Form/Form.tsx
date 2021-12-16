@@ -2,7 +2,7 @@ import { useContext } from "react";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
-import { AppStateContext } from "../AppState/useAppState";
+import { AppStateContext } from "../../hooks/useAppState";
 import MoveLeft from "../MoveLeft/MoveLeft";
 import MoveRight from "../MoveRight/MoveRight";
 import MoveUp from "../MoveUp/MoveUp";

@@ -12,7 +12,6 @@ interface IAppState {
   h: number;
   scale: number;
   result: string | ArrayBuffer | null;
-  base64Image: string;
   jsonHasLoaded: boolean;
 }
 
@@ -28,7 +27,6 @@ export const iAppState: IAppState = {
   h: 0,
   scale: 1,
   result: null,
-  base64Image: "",
   jsonHasLoaded: false,
 };
 

@@ -2,7 +2,7 @@ import { useContext } from "react";
 import IconButton from "@mui/material/IconButton";
 import KeyboardArrowUp from "@mui/icons-material/KeyboardArrowUp";
 
-import { AppStateContext } from "../AppState/useAppState";
+import { AppStateContext } from "../../hooks/useAppState";
 import { MOVE_STEP } from "../../constants";
 
 const MoveUp = () => {
