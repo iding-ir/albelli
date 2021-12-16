@@ -1,7 +1,26 @@
 {
   "name": "albelli",
   "version": "0.1.0",
-  "private": true,
+  "description": "Albelli technical assignment",
+  "keywords": [
+    "React",
+    "Typescript",
+    "Canvas"
+  ],
+  "author": {
+    "name": "Aydin Ghane Kh.",
+    "email": "aydin.ghane.kh@gmail.com",
+    "url": "http://iding.ir"
+  },
+  "license": "ISC",
+  "main": "./index",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iding-ir/albelli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/iding-ir/albelli/issues"
+  },
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
