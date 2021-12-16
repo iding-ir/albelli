@@ -3,11 +3,17 @@ import MuiButton from "@mui/material/Button";
 interface IProps {
   label: string | ReactNode;
   onClick: MouseEventHandler<HTMLButtonElement>;
+  disabled: boolean;
 }
 
-const Button = ({ label, onClick }: IProps) => {
+const Button = ({ label, onClick, disabled }: IProps) => {
   return (
-    <MuiButton sx={{ margin: "0 1rem" }} variant="contained" onClick={onClick}>
+    <MuiButton
+      sx={{ margin: "0 1rem" }}
+      disabled={disabled}
+      variant="contained"
+      onClick={onClick}
+    >
       {label}
     </MuiButton>
   );

@@ -26,7 +26,7 @@ const Canvas = () => {
       if (parsedJSON) {
         if (!jsonHasLoaded) {
           const { height, width, photo } = parsedJSON.canvas;
-          const { x, y, w, h, scale, result } = photo;
+          const { x, y, w, h, scale, result, id } = photo;
 
           setAppState({
             ...appState,
@@ -37,12 +37,15 @@ const Canvas = () => {
             y,
             w,
             h,
+            id,
             scale,
             jsonHasLoaded: true,
           });
         }
       } else {
-        setAppState({ ...appState, w, h, result });
+        const id = files![0].name;
+
+        setAppState({ ...appState, w, h, result, id });
       }
 
       canvasRef.current.width = width;

@@ -1,6 +1,7 @@
 import { useState, createContext } from "react";
 
 interface IAppState {
+  id: string | null;
   files: FileList | null;
   jsons: FileList | null;
   width: number;
@@ -16,6 +17,7 @@ interface IAppState {
 }
 
 export const iAppState: IAppState = {
+  id: null,
   files: null,
   jsons: null,
   width: 500,

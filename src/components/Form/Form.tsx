@@ -11,6 +11,7 @@ import ScaleUp from "../ScaleDown/ScaleDown";
 import ScaleDown from "../ScaleUp/ScaleUp";
 import Width from "../Width/Width";
 import Height from "../Height/Height";
+import FileName from "../FileName/FileName";
 import Export from "../Export/Export";
 
 const Form = () => {
@@ -36,6 +37,8 @@ const Form = () => {
           <Width />
 
           <Height />
+
+          <FileName />
 
           <Export />
         </form>

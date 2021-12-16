@@ -10,7 +10,8 @@ import { ExportJson } from "../../types";
 const Export = () => {
   const [exportObject, setExportObject] = useState({});
   const { appState } = useContext(AppStateContext);
-  const { files, jsons, width, height, x, y, w, h, scale, result } = appState;
+  const { files, jsons, width, height, x, y, w, h, scale, result, id } =
+    appState;
 
   useEffect(() => {
     const exportObject: ExportJson = {
@@ -18,7 +19,7 @@ const Export = () => {
         width: width,
         height: height,
         photo: {
-          id: files && files[0].name,
+          id,
           w,
           h,
           x,
@@ -30,7 +31,7 @@ const Export = () => {
     };
 
     setExportObject(exportObject);
-  }, [files, jsons, width, height, x, y, w, h, scale, result]);
+  }, [files, jsons, width, height, x, y, w, h, scale, result, id]);
 
   return files || jsons ? (
     <>
@@ -46,7 +47,8 @@ const Export = () => {
 
       <Button
         label="Download as JSON"
-        onClick={() => download("exportTextarea", "export.json")}
+        onClick={() => download("exportTextarea", `${id}.json`)}
+        disabled={!id}
       />
     </>
   ) : null;
