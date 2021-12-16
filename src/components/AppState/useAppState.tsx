@@ -4,6 +4,7 @@ interface IAppState {
   files: FileList | null;
   jsons: FileList | null;
   canvasWidth: number;
+  canvasHeight: number | null;
   x: number;
   y: number;
   w: number;
@@ -13,10 +14,11 @@ interface IAppState {
   base64Image: string;
 }
 
-const iAppState: IAppState = {
+export const iAppState: IAppState = {
   files: null,
   jsons: null,
   canvasWidth: 500,
+  canvasHeight: null,
   x: 0,
   y: 0,
   w: 0,

@@ -5,21 +5,23 @@ import { AppStateContext } from "../AppState/useAppState";
 import Button from "../Button/Button";
 import download from "../../utils/download";
 import "./styles.scss";
+import { ExportJson } from "../../types";
 
 const Export = () => {
   const [exportObject, setExportObject] = useState({});
   const { appState } = useContext(AppStateContext);
-  const { files, jsons, canvasWidth, x, y, w, h, scale, result } = appState;
+  const { files, jsons, canvasWidth, canvasHeight, x, y, w, h, scale, result } =
+    appState;
 
   useEffect(() => {
-    const exportObject = {
+    const exportObject: ExportJson = {
       canvas: {
         width: canvasWidth,
-        height: (canvasWidth * h) / w,
+        height: canvasHeight,
         photo: {
           id: files && files[0].name,
-          width: w,
-          height: h,
+          w,
+          h,
           x,
           y,
           scale,
@@ -29,7 +31,7 @@ const Export = () => {
     };
 
     setExportObject(exportObject);
-  }, [files, jsons, canvasWidth, x, y, w, h, scale, result]);
+  }, [files, jsons, canvasWidth, canvasHeight, x, y, w, h, scale, result]);
 
   return files || jsons ? (
     <>

@@ -2,13 +2,17 @@ import { useEffect, useContext, useRef } from "react";
 
 import { AppStateContext } from "../AppState/useAppState";
 import "./style.scss";
+import { ExportJson } from "../../types";
 
 const Canvas = () => {
   const { appState, setAppState } = useContext(AppStateContext);
   const { files, jsons, canvasWidth, x, y, scale } = appState;
   const canvasRef = useRef<any>(null);
 
-  const onLoad = (result: string | ArrayBuffer | null) => {
+  const onLoad = (
+    result: string | ArrayBuffer | null,
+    parsedJSON?: ExportJson
+  ) => {
     // create HTMLImageElement holding image data
     const img = new Image();
 
@@ -19,7 +23,31 @@ const Canvas = () => {
       const w = img.naturalWidth;
       const h = img.naturalHeight;
 
-      setAppState({ ...appState, w, h, result });
+      if (parsedJSON) {
+        const {
+          height: canvasHeight,
+          width: canvasWidth,
+          photo,
+        } = parsedJSON.canvas;
+
+        const { x, y, w, h, scale } = photo;
+
+        setAppState({
+          ...appState,
+          result,
+          canvasWidth: appState.canvasWidth || canvasWidth,
+          canvasHeight: appState.canvasHeight || canvasHeight,
+          x: appState.x || x,
+          y: appState.y || y,
+          w: appState.w || w,
+          h: appState.h || h,
+          scale: appState.scale || scale,
+        });
+      } else {
+        const canvasHeight = (canvasWidth * h) / w;
+
+        setAppState({ ...appState, w, h, canvasWidth, canvasHeight, result });
+      }
 
       canvasRef.current.width = canvasWidth;
       canvasRef.current.height = (canvasWidth * h) / w;
@@ -31,11 +59,9 @@ const Canvas = () => {
   };
 
   useEffect(() => {
-    let file;
-
     if (files) {
       for (let i = 0; i < files.length; ++i) {
-        file = files[i];
+        const file = files[i];
 
         // check if file is valid Image (just a MIME check)
         switch (file.type) {
@@ -60,11 +86,9 @@ const Canvas = () => {
   }, [files, canvasWidth, x, y, scale]);
 
   useEffect(() => {
-    let json;
-
     if (jsons) {
       for (let i = 0; i < jsons.length; ++i) {
-        json = jsons[i];
+        const json = jsons[i];
 
         // check if file is valid JSON (just a MIME check)
         switch (json.type) {
@@ -73,9 +97,9 @@ const Canvas = () => {
             const reader = new FileReader();
 
             reader.onload = () => {
-              const result = reader.result as string;
+              const jsonResult = reader.result as string;
 
-              const encoded = result.replace(
+              const encoded = jsonResult.replace(
                 "data:application/json;base64,",
                 ""
               );
@@ -84,11 +108,9 @@ const Canvas = () => {
 
               const parsedJSON = JSON.parse(decoded);
 
-              const base64Image = parsedJSON.canvas.photo.result;
+              const result = parsedJSON.canvas.photo.result;
 
-              setAppState({ ...appState, base64Image });
-
-              onLoad(base64Image);
+              onLoad(result, parsedJSON);
             };
 
             reader.readAsDataURL(json);
