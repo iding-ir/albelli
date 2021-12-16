@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import { AppStateContext } from "../AppState/useAppState";
 import Button from "../Button/Button";
 import download from "../../utils/download";
+import "./styles.scss";
 
 const Export = () => {
   const [exportObject, setExportObject] = useState({});

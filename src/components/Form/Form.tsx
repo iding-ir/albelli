@@ -1,4 +1,5 @@
 import Uploader from "../Uploader/Uploader";
+import JsonUploader from "../JsonUploader/JsonUploader";
 import MoveLeft from "../MoveLeft/MoveLeft";
 import MoveRight from "../MoveRight/MoveRight";
 import MoveUp from "../MoveUp/MoveUp";
@@ -12,6 +13,10 @@ const Form = () => {
   return (
     <form>
       <Uploader />
+
+      <div>-OR-</div>
+
+      <JsonUploader />
 
       <MoveLeft />
 

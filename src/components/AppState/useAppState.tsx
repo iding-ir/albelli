@@ -2,6 +2,7 @@ import { useState, createContext } from "react";
 
 interface IAppState {
   files: FileList | null;
+  jsons: FileList | null;
   canvasWidth: number;
   x: number;
   y: number;
@@ -9,10 +10,12 @@ interface IAppState {
   h: number;
   scale: number;
   result: string | ArrayBuffer | null;
+  base64Image: string;
 }
 
 const iAppState: IAppState = {
   files: null,
+  jsons: null,
   canvasWidth: 500,
   x: 0,
   y: 0,
@@ -20,6 +23,7 @@ const iAppState: IAppState = {
   h: 0,
   scale: 1,
   result: null,
+  base64Image: "",
 };
 
 interface IStateContext {
