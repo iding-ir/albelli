@@ -12,13 +12,14 @@ interface IAppState {
   scale: number;
   result: string | ArrayBuffer | null;
   base64Image: string;
+  jsonHasLoaded: boolean;
 }
 
 export const iAppState: IAppState = {
   files: null,
   jsons: null,
   width: 500,
-  height: 500,
+  height: 300,
   x: 0,
   y: 0,
   w: 0,
@@ -26,6 +27,7 @@ export const iAppState: IAppState = {
   scale: 1,
   result: null,
   base64Image: "",
+  jsonHasLoaded: false,
 };
 
 interface IStateContext {

@@ -6,7 +6,7 @@ import { ExportJson } from "../../types";
 
 const Canvas = () => {
   const { appState, setAppState } = useContext(AppStateContext);
-  const { files, jsons, width, height, x, y, scale } = appState;
+  const { files, jsons, width, height, x, y, scale, jsonHasLoaded } = appState;
   const canvasRef = useRef<any>(null);
 
   const onLoad = (
@@ -24,26 +24,23 @@ const Canvas = () => {
       const h = img.naturalHeight;
 
       if (parsedJSON) {
-        const { height, width } = parsedJSON.canvas;
-        const {
-          x: photoX,
-          y: photoY,
-          w: photoW,
-          h: photoH,
-          scale: photoScale,
-        } = parsedJSON.canvas.photo;
+        if (!jsonHasLoaded) {
+          const { height, width, photo } = parsedJSON.canvas;
+          const { x, y, w, h, scale, result } = photo;
 
-        setAppState({
-          ...appState,
-          result,
-          width: appState.width || width,
-          height: appState.height || height,
-          x: x || photoX,
-          y: y || photoY,
-          w: w || photoW,
-          h: h || photoH,
-          scale: appState.scale || photoScale,
-        });
+          setAppState({
+            ...appState,
+            result,
+            width,
+            height,
+            x,
+            y,
+            w,
+            h,
+            scale,
+            jsonHasLoaded: true,
+          });
+        }
       } else {
         setAppState({ ...appState, w, h, result });
       }
