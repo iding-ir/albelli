@@ -3,8 +3,8 @@ import { useState, createContext } from "react";
 interface IAppState {
   files: FileList | null;
   jsons: FileList | null;
-  canvasWidth: number;
-  canvasHeight: number;
+  width: number;
+  height: number;
   x: number;
   y: number;
   w: number;
@@ -17,8 +17,8 @@ interface IAppState {
 export const iAppState: IAppState = {
   files: null,
   jsons: null,
-  canvasWidth: 500,
-  canvasHeight: 500,
+  width: 500,
+  height: 500,
   x: 0,
   y: 0,
   w: 0,

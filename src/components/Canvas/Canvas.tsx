@@ -6,7 +6,7 @@ import { ExportJson } from "../../types";
 
 const Canvas = () => {
   const { appState, setAppState } = useContext(AppStateContext);
-  const { files, jsons, canvasWidth, canvasHeight, x, y, scale } = appState;
+  const { files, jsons, width, height, x, y, scale } = appState;
   const canvasRef = useRef<any>(null);
 
   const onLoad = (
@@ -24,31 +24,32 @@ const Canvas = () => {
       const h = img.naturalHeight;
 
       if (parsedJSON) {
+        const { height, width } = parsedJSON.canvas;
         const {
-          height: canvasHeight,
-          width: canvasWidth,
-          photo,
-        } = parsedJSON.canvas;
-
-        const { x, y, w, h, scale } = photo;
+          x: photoX,
+          y: photoY,
+          w: photoW,
+          h: photoH,
+          scale: photoScale,
+        } = parsedJSON.canvas.photo;
 
         setAppState({
           ...appState,
           result,
-          canvasWidth: appState.canvasWidth || canvasWidth,
-          canvasHeight: appState.canvasHeight || canvasHeight,
-          x: appState.x || x,
-          y: appState.y || y,
-          w: appState.w || w,
-          h: appState.h || h,
-          scale: appState.scale || scale,
+          width: appState.width || width,
+          height: appState.height || height,
+          x: x || photoX,
+          y: y || photoY,
+          w: w || photoW,
+          h: h || photoH,
+          scale: appState.scale || photoScale,
         });
       } else {
         setAppState({ ...appState, w, h, result });
       }
 
-      canvasRef.current.width = canvasWidth;
-      canvasRef.current.height = canvasHeight;
+      canvasRef.current.width = width;
+      canvasRef.current.height = height;
 
       const ctx = canvasRef.current.getContext("2d");
 
@@ -81,7 +82,7 @@ const Canvas = () => {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [files, canvasWidth, canvasHeight, x, y, scale]);
+  }, [files, width, height, x, y, scale]);
 
   useEffect(() => {
     if (jsons) {
@@ -119,7 +120,7 @@ const Canvas = () => {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [jsons, canvasWidth, canvasHeight, x, y, scale]);
+  }, [jsons, width, height, x, y, scale]);
 
   return files || jsons ? (
     <div className="canvas">

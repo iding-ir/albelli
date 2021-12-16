@@ -10,14 +10,13 @@ import { ExportJson } from "../../types";
 const Export = () => {
   const [exportObject, setExportObject] = useState({});
   const { appState } = useContext(AppStateContext);
-  const { files, jsons, canvasWidth, canvasHeight, x, y, w, h, scale, result } =
-    appState;
+  const { files, jsons, width, height, x, y, w, h, scale, result } = appState;
 
   useEffect(() => {
     const exportObject: ExportJson = {
       canvas: {
-        width: canvasWidth,
-        height: canvasHeight,
+        width: width,
+        height: height,
         photo: {
           id: files && files[0].name,
           w,
@@ -31,7 +30,7 @@ const Export = () => {
     };
 
     setExportObject(exportObject);
-  }, [files, jsons, canvasWidth, canvasHeight, x, y, w, h, scale, result]);
+  }, [files, jsons, width, height, x, y, w, h, scale, result]);
 
   return files || jsons ? (
     <>

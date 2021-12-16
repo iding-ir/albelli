@@ -1,12 +1,11 @@
-import { useState, useContext, ChangeEvent } from "react";
+import { useContext, ChangeEvent } from "react";
 import TextField from "@mui/material/TextField";
 
 import { AppStateContext } from "../AppState/useAppState";
 
-const CanvasHeight = () => {
+const Height = () => {
   const { appState, setAppState } = useContext(AppStateContext);
-  const { canvasHeight } = appState;
-  const [height, setHeight] = useState(canvasHeight);
+  const { height } = appState;
 
   const minHeight = 100;
   const maxHeight = 1000;
@@ -18,16 +17,14 @@ const CanvasHeight = () => {
       return;
     }
 
-    setHeight(height);
-
-    setAppState({ ...appState, canvasHeight: height });
+    setAppState({ ...appState, height });
   };
 
   return (
     <>
       <TextField
         type="number"
-        id="canvasHeight"
+        id="height"
         inputProps={{ min: minHeight, max: maxHeight, step: 50 }}
         value={height}
         onChange={onChange}
@@ -38,4 +35,4 @@ const CanvasHeight = () => {
   );
 };
 
-export default CanvasHeight;
+export default Height;
